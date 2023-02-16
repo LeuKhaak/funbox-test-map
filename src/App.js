@@ -1,14 +1,22 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import MapSection from "./components/MapSection";
-import YandexMap from "./components/NewMap";
+import RoutePoints from "./components/RoutePoints";
+import YandexMap from "./components/YandexMap/YandexMap";
 
 function App() {
+  const [pointValue, setPointValue] = useState("");
+
+  const createPoint = (arg) => {
+    setPointValue(arg);
+    console.log("AppPoint", pointValue);
+  };
+
   return (
     <>
-      <YandexMap />
+      <YandexMap pointValue={pointValue} />
       <React.StrictMode>
-        <MapSection />
+        <RoutePoints createPoint={createPoint} />
       </React.StrictMode>
     </>
   );
